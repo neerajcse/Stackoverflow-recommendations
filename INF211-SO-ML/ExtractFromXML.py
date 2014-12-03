@@ -15,7 +15,7 @@ def main():
             if elem.get("PostTypeId") == "1":
                 #print(elem.get("PostTypeId"))
                 getElementDataAndStore(elem)
-            count+=1
+                count+=1
         if count > macount:
             break
     print(count)
