@@ -1,0 +1,7 @@
+*.pyc
+*.mm*
+*.dict*
+*.log*
+*.db*
+*.model*
+*.pyproj*
