@@ -3,7 +3,7 @@ import numpy
 import json
 
 DB = "stackoverflow-posts.db"
-BASE_DIR = "H:\Stackoverflow Database\INF211-SO-ML\INF211-SO-ML\small-test"
+BASE_DIR = "."
 BASE_META_DIR = "."
 TAG_TO_ID_DICT = {}
 PID_TO_TAGS_LIST = []

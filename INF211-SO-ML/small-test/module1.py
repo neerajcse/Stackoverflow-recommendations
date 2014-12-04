@@ -10,8 +10,8 @@ from CorpusDAO import CorpusDAO
 
 
 
-BASE_DIR = "H:\Stackoverflow Database\MLData\\"
-BASE_META_DIR = "H:\Stackoverflow Database\MLMetaData\\"
+BASE_DIR = "."
+BASE_META_DIR = "."
 SERIALIZED_CORPUS = os.path.join(BASE_META_DIR, "corpus.mm")
 SERIALIZED_TFIDF_CORPUS = os.path.join(BASE_META_DIR, "corpus_tfidf.mm")
 
