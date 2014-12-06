@@ -27,6 +27,12 @@
     <Compile Include="module1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="small-test\CorpusDAO.py" />
+    <Compile Include="small-test\ExtractFromXML.py" />
+    <Compile Include="small-test\main.py" />
+    <Compile Include="small-test\module1.py" />
+    <Compile Include="small-test\StackOverflowSqlite.py" />
+    <Compile Include="small-test\TextsDAO.py" />
     <Compile Include="TextsDAO.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="small-test\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="small-test\.gitignore" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
