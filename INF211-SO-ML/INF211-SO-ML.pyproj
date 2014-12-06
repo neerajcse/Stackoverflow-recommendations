@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a58f2a1f-4dd5-4ffb-9412-5c1fb768c9d2</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>module1.py</StartupFile>
+    <StartupFile>small-test\module2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,6 +31,9 @@
     <Compile Include="small-test\ExtractFromXML.py" />
     <Compile Include="small-test\main.py" />
     <Compile Include="small-test\module1.py" />
+    <Compile Include="small-test\module2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="small-test\StackOverflowSqlite.py" />
     <Compile Include="small-test\TextsDAO.py" />
     <Compile Include="TextsDAO.py">

@@ -4,6 +4,7 @@ import time
 
 
 # Implementation specific imports
+import os
 from os import listdir
 from os.path import isfile, join 
 import codecs
@@ -35,9 +36,10 @@ class MLStripper(HTMLParser):
 class TextsDAO(object):
     """Provides an interface to iterate over the corpus of 
     files, returns the text with all stopwords removed."""
-    def __init__(self, base_dir, db):
+    def __init__(self, base_dir, db, get_tags = False):
         self.__base_dir = base_dir
         self.__db_name = db
+        self.__yeild_tags = get_tags
 
     def __iter__(self):
         """files = [f for f in listdir(self.__base_dir) if isfile(join(self.__base_dir, f))]
@@ -50,11 +52,17 @@ class TextsDAO(object):
                 print("..")
                 yield doc.split()
         else:
-            self.conn = sqlite3.connect(self.__db_name)
+            self.conn = sqlite3.connect(os.path.join(self.__base_dir,self.__db_name))
             self.cursor = self.conn.cursor()
+            count = 0
             for sid,tags,title,question in self.cursor.execute("select * from posts"):
                 print("..")
-                yield self.tokenize(title.decode("utf-8") + " " + question.decode("utf-8"))
+                if self.__yeild_tags:
+                    print("{}".format(tags))
+                    yield (count, self.tokenize(tags.decode("utf-8")))
+                else:
+                    yield self.tokenize(title.decode("utf-8") + " " + question.decode("utf-8"))
+                count += 1
 
     def close(self):
         self.conn.close()
@@ -65,7 +73,9 @@ class TextsDAO(object):
 
     def tokenize(self, string):
         """logic to tokenize a string. Involves removing tags, splitting, lowercasing words etc"""
-        s = MLStripper()
-        s.feed(string)
-        new_s = ' '.join([x for x in re.sub('[^a-zA-Z0-9\n\.]', ' ', s.get_data()).split() if len(x) > 1])
+        if not self.__yeild_tags:
+           s = MLStripper()
+           s.feed(string)
+           string = s.get_data()
+        new_s = ' '.join([x for x in re.sub('[^a-zA-Z0-9\n\.\-\#]', ' ', string).split() if len(x) > 1])
         return ' '.join(new_s.split("\n")).split()
